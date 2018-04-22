@@ -18,12 +18,12 @@ RUN apt-get update && \
 RUN \
   apt-get install -y maven git libcurl4-openssl-dev cmake build-essential libssl-dev locales && \
   apt-get clean
-RUN  cd ~ && git clone  --depth 1  https://github.com/OrdinaryDude/elastic-core-maven.git
-RUN  cd ~/elastic-core-maven && mvn package
-RUN  cd ~ && git clone  --depth 1 https://github.com/OrdinaryDude/xel_miner.git
-RUN  cd ~/xel_miner && cmake . && make
-RUN  cd ~/elastic-core-maven && ./pull_miner.sh
+RUN  cd / && git clone  --depth 1  https://github.com/OrdinaryDude/elastic-core-maven.git
+RUN  cd /elastic-core-maven && mvn package
+RUN  cd / && git clone  --depth 1 https://github.com/OrdinaryDude/xel_miner.git
+RUN  cd /xel_miner && cmake . && make
+RUN  cd /elastic-core-maven && ./pull_miner.sh
 
 EXPOSE 17874 17876 16874 16876
-WORKDIR /root/elastic-core-maven
-ENTRYPOINT /root/elastic-core-maven/run.sh
+WORKDIR /elastic-core-maven
+ENTRYPOINT /elastic-core-maven/run.sh
